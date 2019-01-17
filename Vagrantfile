@@ -21,7 +21,7 @@ Vagrant.configure("2") do |config|
     apt-get update
     apt-get install -y \
       git \
-      zsh \
+      zsh
   SHELL
 
   config.vm.provision "shell", privileged: false, inline:
