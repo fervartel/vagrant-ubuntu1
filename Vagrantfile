@@ -17,7 +17,7 @@ Vagrant.configure("2") do |config|
   # Oh My ZSH Install section
   config.vm.provision "shell", inline:
   <<-SHELL
-    echo "Installing base packages"
+    echo "INSTALLING BASE PACKAGES"
     apt-get update
     apt-get install -y \
       git \
@@ -26,17 +26,17 @@ Vagrant.configure("2") do |config|
 
   config.vm.provision "shell", privileged: false, inline:
   <<-SHELL
-    echo "Cloning Oh My Zsh from the git repo" 
+    echo "CLONING OH MY ZSH FROM THE GIT REPO" 
     git clone https://github.com/robbyrussell/oh-my-zsh.git ~/.oh-my-zsh
-    echo "Copying the default .zshrc config file"
+    echo "COPYING DEFAULT .zshrc CONFIG FILE"
     cp ~/.oh-my-zsh/templates/zshrc.zsh-template ~/.zshrc
-    echo "Changing the Oh_My_zsh theme"
-    sed -i 's/robbyrussell/agnoster/g' ~/.zshrc
+    echo "CHANGING THE OH_MY_ZSH THEME"
+    sed -i 's/ZSH_THEME="robbyrussell"/ZSH_THEME="agnoster"/' ~/.zshrc
   SHELL
   
   config.vm.provision "shell", inline:
   <<-SHELL
-    echo "Changing the vagrant user's shell to use zsh"
+    echo "CHANGING THE VAGRANT USER'S SHELL TO USE ZSH"
     chsh -s /bin/zsh vagrant
   SHELL
 ############################################################
