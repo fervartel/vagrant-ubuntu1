@@ -3,7 +3,7 @@
 
 # Basic Config.
 Vagrant.configure("2") do |config|
-  config.vm.box = "ubuntu/xenial64"
+  config.vm.box = "bento/ubuntu-18.04"
   config.vm.hostname = "ubuntu1"
   #config.vm.network "private_network", type: "dhcp"  
   config.vm.network "private_network", ip: "10.0.0.3"  
