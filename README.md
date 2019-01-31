@@ -14,5 +14,7 @@ The objective of this vagrant file is to spin up and provision a VirtualBox VM w
 - [Vagrant](https://www.vagrantup.com/downloads.html)
 
 ## Advantages
-The main advantage of using vagrant for this kind of testing environment is that it's blazing fast to deploy and it adds a Zshell flavor to give a new look to your terminal. The use of [Oh-My-Zsh](https://github.com/robbyrussell/oh-my-zsh) makes it really fun to use while while adding some interesting visual features (especially when using GIT every day!)
+The main advantage of using vagrant for this kind of testing environment is that it's blazing fast to deploy.  
+
+The addition of Zshell gives a new look to your terminal. The use of [Oh-My-Zsh](https://github.com/robbyrussell/oh-my-zsh) makes it really fun to use while adding some interesting visual features (especially when using GIT every day!)
 
