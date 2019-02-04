@@ -14,6 +14,12 @@ vb.name = "vagrant-ubuntu1"
 end
 
 ############################################################
+# Provisioning with Ansible
+#config.vm.provision "ansible_local" do |ansible|
+#    ansible.playbook = "playbook.yml"
+#    ansible.install_mode = "pip"
+#end
+
 # Oh My ZSH Install section
 config.vm.provision "shell", inline:
 <<-SHELL
