@@ -1,7 +1,7 @@
 # Basic Ubuntu 18.04 setup with ZShell 
 
 ## Objectives
-The objective of this vagrant file is to spin up and provision a VirtualBox VM with the following especifications:
+The objective of this vagrant file is to spin up and provision a VirtualBox VM with the following especifications (USING SHELL SCRIPTS EMBEDDED IN THE VAGRANTFILE):
 
 - OS: ubuntu-18.04
 - Private IP: 10.0.0.3
