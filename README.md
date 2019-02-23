@@ -6,7 +6,7 @@ The objective of this vagrant file is to spin up and provision a VirtualBox VM w
 - OS: ubuntu-18.04
 - Private IP: 10.0.0.3
 - Shell: ZShell + Oh My SZh (only for fun)
-- Basic Packages: GIT, Zsh
+- Basic Packages: GIT, Zsh, Docker
 
 ## Requirements
 
