@@ -14,30 +14,44 @@ vb.name = "vagrant-ubuntu1"
 end
 
 ############################################################
-# Provisioning with Ansible
-#config.vm.provision "ansible_local" do |ansible|
-#    ansible.playbook = "playbook.yml"
-#    ansible.install_mode = "pip"
-#end
-
-# Oh My ZSH Install section
+# Provisioning VM
 config.vm.provision "shell", inline:
 <<-SHELL
 echo "INSTALLING BASE PACKAGES"
 apt-get update
 apt-get install -y \
 git \
-zsh
+zsh \
+apt-transport-https \
+ca-certificates \
+curl \
+gnupg2 \
+software-properties-common
+echo "DOCKER - ADDING DOCKER’S OFFICIAL GPG KEY"
+curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
+echo "DOCKER - VERIFY FINGERPRINT 9DC8 5822 9FC7 DD38 854A E2D8 8D81 803C 0EBF CD88"
+apt-key fingerprint 0EBFCD88
+echo "DOCKER - SETUP STABLE REPO"
+add-apt-repository \
+"deb [arch=amd64] https://download.docker.com/linux/ubuntu \
+$(lsb_release -cs) \
+stable"
+apt-get update
+echo "DOCKER - INSTALL DOCKER CE VERSION 18.06.1 (KUBERNETES COMPATIBLE)"
+apt-get install -y docker-ce=18.06.1~ce~3-0~ubuntu
+apt-mark hold docker-ce
+echo "DOCKER - ADDING VAGRANT USER TO THE DOCKER GROUP"
+usermod -aG docker vagrant
 SHELL
 
 config.vm.provision "shell", privileged: false, inline:
 <<-SHELL
 echo "CLONING OH MY ZSH FROM THE GIT REPO" 
 git clone https://github.com/robbyrussell/oh-my-zsh.git ~/.oh-my-zsh
-echo "COPYING DEFAULT .zshrc CONFIG FILE"
+echo "COPYING THE DEFAULT .ZSHRC CONFIG FILE"
 cp ~/.oh-my-zsh/templates/zshrc.zsh-template ~/.zshrc
 echo "CHANGING THE OH_MY_ZSH THEME"
-sed -i 's/ZSH_THEME="robbyrussell"/ZSH_THEME="agnoster"/' ~/.zshrc
+sed -i 's/ZSH_THEME="robbyrussell"/ZSH_THEME="agnoster"/' ~/.zshrc  
 SHELL
 
 config.vm.provision "shell", inline:
