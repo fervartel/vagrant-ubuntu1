@@ -2,3 +2,4 @@
 **/.vagrant
 **/shared
 *.log
+*.bak
